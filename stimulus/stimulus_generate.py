@@ -19,19 +19,9 @@ def alter_contrast(img, percentage):
 
 def get_best_orientation(net):
     net.to(device)
-    all_rsp = []
-    all_orientation = range(0, 360, 20)
-    for orientation in all_orientation:
-        stimuli = generate_stimuli(15, orientation, (25, 25), 0.8, 50, [10], [0.5])
-        sample_stimuli = stimuli[0]
+    # YOUR SOLUTION START HERE
 
-        s = torch.FloatTensor(sample_stimuli).to(device)
-        s = torch.reshape(s, (1, 1, 50, 50))
-        rsp = net(s)
-        all_rsp.append(rsp.detach().cpu().numpy())
-    all_rsp = np.stack(all_rsp)
-    best_orientation_index = np.argmax(all_rsp, axis=0)[0]
-    best_orientation = np.stack([all_orientation[i] for i in best_orientation_index])
+    # END OF YOUR SOLUTION
     return best_orientation
 
 
